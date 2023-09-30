@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# display content of a cwd without the number
+
+len=$( ls | wc -l )
+res=$( ls )
+for ((i=0; i<len;i++))
+do
+	substring=$(echo "${res[i]}" | cut -d '-' -f 2-)
+	echo "$substring"
+done
