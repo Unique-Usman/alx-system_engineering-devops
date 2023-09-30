@@ -10,15 +10,16 @@ do
 		echo "bad luck from China"
 		;;
 		9)
-		echo "bad luck from Japan"
 		echo $a
+		echo "bad luck from Japan"
 		;;
 		17)
+		echo $a
 		echo "bad luck from Italy"
 		;;
 		*)
 		echo $a
 		;;
 	esac
-	(( a++ ))
+	: $(( a++ ))
 done
