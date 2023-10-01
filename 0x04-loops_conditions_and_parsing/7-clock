@@ -17,7 +17,7 @@ do
 		(( min++ ))
 	else
 		min=1
-		( hour++ )
+		(( hour++ ))
 		if [ $hour -ne 12 ]
 		then
 			 echo "Hour: $hour"
