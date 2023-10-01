@@ -2,7 +2,8 @@
 # This script displays the time for 12 hours and 59 minutes
 
 hour=0
-min=0
+min=1
+echo "Hour: $hour"
 while true
 do
 	if [ $hour -eq 12 ]
