@@ -28,7 +28,7 @@ then
 	echo "manage_my_process stopped"
 	kill "$( cat /var/run/my_process.pid )"
 	rm /var/run/my_process.pid
-elif [ "${1}" == "stop" ]
+elif [ "${1}" == "restart" ]
 then
 	kill "$( cat /var/run/my_process.pid )"
 	rm /var/run/my_process.pid
