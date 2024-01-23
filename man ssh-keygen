@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# create ssh pair with the paraphrase betty
+# and also at the locatation ~/.ssh/school
+
+ssh-keygen -t rsa -p betty -f ~/.ssh/school
