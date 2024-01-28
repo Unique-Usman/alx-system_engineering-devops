@@ -1,0 +1,10 @@
+# install the app for the creating certificate
+sudo apt install letsencrypt
+# it will ask for password and email address and some other question
+# it will ask for your
+# kill all the service on port 80.
+# we will then get two certificate. 
+# HAproxy want just one file and not two file.
+
+sudo certbot certonly --standalone --preferred-challenges http --http-01-port 80 -d example.com -d www.example.com
+sudo cat /etc/letsencrypt/live/web-01.uniqueusman.tech/fullchain.pem /etc/letsencrypt/live/web-01.uniqueusman.tech/privkey.pem | sudo tee /etc/haproxy/haproxy.pem
