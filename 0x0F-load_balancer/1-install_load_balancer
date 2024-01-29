@@ -5,11 +5,12 @@
 BACKEND="backend my_servers
 	balance roundrobin
 	mode http
-	server 208063-web-01 100.25.15.14:80 check
-	server 208063-web-02 34.232.78.53:80 check"
+	server 208063-web-01 54.87.224.239:80 check
+	server 251284-web-02 3.85.16.5:80 check"
 
 FRONTEND="frontend http
 	bind *:80
+  timeout client 60s
 	mode http
 	default_backend my_servers"
 

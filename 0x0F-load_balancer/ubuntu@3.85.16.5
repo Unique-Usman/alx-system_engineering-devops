@@ -6,7 +6,6 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 HOST_NAME=$(hostname)
-NEW_HEADER="\tadd_header X-Served-By $HOST_NAME"
 
 # Creating an index.html page
 echo "Hello World!" | sudo tee /var/www/html/index.html
@@ -23,7 +22,10 @@ new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation 
 
 sudo sed -i "s/listen 80 default_server;/$new_string/" /etc/nginx/sites-available/default
 
-sudo sed -i "22a\ $NEW_HEADER" /etc/nginx/sites-available/default
+string_for_replacement="try_files $uri $uri/ =404;\n\tadd_header X-Served-By '$HOST_NAME';"
+
+sudo sed -i "s/try_files $uri $uri/ =404;/$string_for_replacement/" /etc/nginx/sites-available/default
+
 # Testing configurations for syntax errors
 sudo nginx -t
 
