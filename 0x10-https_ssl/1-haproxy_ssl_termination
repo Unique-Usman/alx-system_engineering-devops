@@ -34,16 +34,16 @@ defaults
 	errorfile 504 /etc/haproxy/errors/504.http
 
 frontend http
-	bind *:80
-	bind *:443 ssl crt /etc/haproxy/haproxy.pem alpn h2,http/1.1
-	timeout client 60s
-	mode http
-	default_backend my_servers
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/haproxy.pem alpn h2,http/1.1
+        timeout client 60s 
+        mode http
+        default_backend my_servers
 
 backend my_servers
 	balance roundrobin
-  	timeout connect 10s
-  	timeout server 100s
+        timeout connect 10s 
+        timeout server 100s
 	mode http
-	server uniqueusman  20.117.200.102:80 check
-	server unqiuesman01 20.189.115.191:80 check
+	server 208063-web-01 54.87.224.239:80 check
+	server 251284-web-02 3.85.16.5:80 check
