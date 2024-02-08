@@ -1,0 +1,11 @@
+ufw default allow outgoing
+ufw default deny incoming
+ufw allow ssh
+ufw status
+ufw enable
+ufw disable
+ufw allow http/tcp
+ufw allow 80
+ufw allow https/tcp
+ufw status numbered
+ufw delete <number>
