@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-
 """
 Give out the information for given employee ID,
 returns information about his/her TODO list progress.
 """
-import sys
 import requests
+import sys
 
 
 def print_details():
