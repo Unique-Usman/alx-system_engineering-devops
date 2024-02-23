@@ -3,11 +3,12 @@
 Give out the information for given employee ID,
 returns information about his/her TODO list progress.
 """
+import csv
 import requests
 import sys
 
 
-def print_details(user_id):
+def print_details_csv(user_id):
     """
     Print out the todo list information for a given employee ID
     """
@@ -19,21 +20,20 @@ def print_details(user_id):
     for todo in todos:
         if todo.get("userId") == user_id:
             user_todo.append(todo)
+    ans = []
 
-    number_completed = 0
-    todo_name = []
-    for todo in user_todo:
-        if todo.get("completed"):
-            number_completed += 1
-        todo_name.append(todo.get("title"))
+    for user in user_todo:
+        temp = [user_id, res.get("username"), user.get("completed"),
+                user.get("title")]
+        ans.append(temp)
 
-    string_todo_name = "\n\t".join(todo_name)
+    csv_file = f"{user_id}.csv"
 
-    print(f"""Employee {res.get("name")} is done \
-with task({number_completed}/{len(user_todo)}):
-\t{string_todo_name}
-""")
+    with open(csv_file, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        for row in ans:
+            writer.writerow(row)
 
 
 if __name__ == "__main__":
-    print_details(sys.argv[1])
+    print_details_csv(int(sys.argv[1]))
