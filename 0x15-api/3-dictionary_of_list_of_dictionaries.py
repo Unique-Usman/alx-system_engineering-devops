@@ -36,8 +36,11 @@ def combine_ans():
     Combine all the todolist for each of the users
     """
     finalans = []
-    for i in range(1, 11):
-        finalans.append(return_details_json(i))
+    res = \
+        requests.get(f"https://jsonplaceholder.typicode.com/users")
+    res = res.json()
+    for ele in res:
+        finalans.append(return_details_json(ele.get("id")))
     with open("todo_all_employees.json", "w", encoding="utf-8") as f:
         json.dump(finalans, f)
 
