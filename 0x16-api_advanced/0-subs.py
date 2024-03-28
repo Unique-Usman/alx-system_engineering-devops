@@ -9,12 +9,18 @@ import requests
 
 def number_of_subscribers(subreddit):
     """Return the total number of subscribers on a given subreddit."""
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {
-        "User-Agent": "Usman_bot"
-    }
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 404:
+    
+
+    if subreddit is None or not isinstance(subreddit, str):
         return 0
-    results = response.json().get("data")
-    return results.get("subscribers")
+
+    user_agent = {'User-agent': 'Usman_Bot'}
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+    response = requests.get(url, headers=user_agent)
+    results = response.json()
+
+    try:
+        return results.get('data').get('subscribers')
+
+    except Exception:
+        return 0
