@@ -8,19 +8,13 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """
-    The function that returns the number of
-    suscribers.
-
-    Args:
-        subreddit (str): The subreddit
-    """
-    headers = requests.utils.default_headers()
-    headers.update({'User-Agent': 'UsmanBot/1.0'})
-    r = requests.get(f"https://www.reddit.com/r/{subreddit}/about.json",
-                     headers=headers, allow_redirects=False)
-    sub = r.json().get("data", {}).get("subscribers")
-
-    if sub:
-        return sub
-    return 0
+    """Return the total number of subscribers on a given subreddit."""
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {
+        "User-Agent": "Usman_bot"
+    }
+    response = requests.get(url, headers=headers, allow_redirects=False)
+    if response.status_code == 404:
+        return 0
+    results = response.json().get("data")
+    return results.get("subscribers")
