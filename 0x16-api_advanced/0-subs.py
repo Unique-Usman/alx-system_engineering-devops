@@ -9,7 +9,6 @@ import requests
 
 def number_of_subscribers(subreddit):
     """Return the total number of subscribers on a given subreddit."""
-    
 
     if subreddit is None or not isinstance(subreddit, str):
         return 0
