@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 # Gracefully reloads Gunicorn.
 
-pgrep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+pgrep gunicorn | while read -r pid; do
+    echo "Reloading Gunicorn process $pid"
+    kill -HUP "$pid"
+done
+
