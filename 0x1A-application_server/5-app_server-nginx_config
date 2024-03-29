@@ -81,7 +81,7 @@ server {
 	}
 
 	location /static {
-		alias web_dynanic/static/;
+		alias web_dynamic/static/;
 	}
 	# pass PHP scripts to FastCGI server
 	#
